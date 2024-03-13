@@ -1,0 +1,22 @@
+<assembly>
+    <id>my-assembly</id>
+
+    <!-- 打包格式：jar -->
+    <formats>
+        <format>jar</format>
+    </formats>
+
+    <dependencySets>
+        <dependencySet>
+            <unpack>true</unpack><!-- 是否解压 -->
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.outputDirectory}</directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>
