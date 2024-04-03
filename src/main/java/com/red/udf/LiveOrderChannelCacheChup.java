@@ -5,9 +5,20 @@ import cn.hutool.cache.GlobalPruneTimer;
 import cn.hutool.cache.impl.TimedCache;
 import cn.hutool.core.date.DateUnit;
 import cn.hutool.core.date.DateUtil;
+import com.red.annotation.*;
 import org.apache.flink.table.functions.FunctionContext;
 import org.apache.flink.table.functions.ScalarFunction;
 
+@UdfMeta(funcName = "order_channel_cache",
+        funcDesc = "订单状态复用缓存器，两条订单流A和B，B订单流延迟5min作为驱动流，复用订单流A的数据，以达到更新订单流A的渠道数据",
+        funcExample = "select order_channel_cache(cacheSecond,dataType,key,filed_1,filed_2,filed_3)",
+        funcStatus = FunctionStatusEnum.ONLINE,
+        funcParam = {@Param(paramType =@DataType(base = DataTypeEnum.BIGINT,dataTypeDesc = DataTypeDescEnum.BASE),paramDesc = "缓存时间，必须比wait的时间长一点，单位秒"),
+                @Param(paramType =@DataType(base = DataTypeEnum.INT,dataTypeDesc = DataTypeDescEnum.BASE),paramDesc = "区分wait数据，触发更新。1 代表 低wait数据，2 代表高wait数据"),
+                @Param(paramType =@DataType(base = DataTypeEnum.STRING,dataTypeDesc = DataTypeDescEnum.BASE),paramDesc = "缓存的key,如 concat(package_id,goods_id)"),
+                @Param(paramType =@DataType(array = DataTypeEnum.STRING,dataTypeDesc = DataTypeDescEnum.ARRAY),paramDesc = "任意多个字段")},
+        funcReturn = @DataType(array = DataTypeEnum.STRING,dataTypeDesc = DataTypeDescEnum.ARRAY),
+        funcReturnDesc = "返回原始任意多个字段，字符串类型")
 public class LiveOrderChannelCacheChup extends ScalarFunction {
 
     TimedCache<String, String[]> timedCache = null;

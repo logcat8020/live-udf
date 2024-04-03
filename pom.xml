@@ -14,6 +14,10 @@
         <flink-17.version>red-1.17-SNAPSHOT</flink-17.version>
         <flink-13.version>red-1.13-SNAPSHOT</flink-13.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--   打包   -->
+<!--        <scope.tag>provided</scope.tag>-->
+        <!--    运行    -->
+                <scope.tag>compile</scope.tag>
     </properties>
 
     <profiles>
@@ -27,13 +31,13 @@
                     <groupId>org.apache.flink</groupId>
                     <artifactId>flink-streaming-java</artifactId>
                     <version>${flink-17.version}</version>
-                    <scope>provided</scope>
+                    <scope>${scope.tag}</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.flink</groupId>
                     <artifactId>flink-table-common</artifactId>
                     <version>${flink-17.version}</version>
-                    <scope>provided</scope>
+                    <scope>${scope.tag}</scope>
                 </dependency>
             </dependencies>
         </profile>
@@ -44,13 +48,13 @@
                     <groupId>org.apache.flink</groupId>
                     <artifactId>flink-streaming-java_2.11</artifactId>
                     <version>${flink-13.version}</version>
-                    <scope>provided</scope>
+                    <scope>${scope.tag}</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.flink</groupId>
                     <artifactId>flink-table-common</artifactId>
                     <version>${flink-13.version}</version>
-                    <scope>provided</scope>
+                    <scope>${scope.tag}</scope>
                 </dependency>
             </dependencies>
         </profile>
@@ -70,7 +74,7 @@
             <groupId>red.data.platform.tracker</groupId>
             <artifactId>tracker-server-model-shade</artifactId>
             <version>flink-0.1.4-SNAPSHOT</version>
-            <scope>provided</scope>
+            <scope>${scope.tag}</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
