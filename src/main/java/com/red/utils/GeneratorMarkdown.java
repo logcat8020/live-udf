@@ -36,8 +36,8 @@ public class GeneratorMarkdown {
                                 {"函数描述", info.funcDesc()},
                                 {"函数示例",info.funcExample()},
                                 {"入参个数",String.valueOf(info.funcParam().length)},
-                                {"返回值",getParamType(info.funcReturn())},
-                                {"返回值描述",info.funcReturnDesc()},
+                                {"返回值类型",getParamType(info.funcReturn().paramType())},
+                                {"返回值描述",info.funcReturn().paramDesc()},
                                 {"函数状态",info.funcStatus().getChinese()}
                         });
                 if (params.length > 0) {

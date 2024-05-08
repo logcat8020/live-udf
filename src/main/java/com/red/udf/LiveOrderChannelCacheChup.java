@@ -17,8 +17,7 @@ import org.apache.flink.table.functions.ScalarFunction;
                 @Param(paramType =@DataType(base = DataTypeEnum.INT,dataTypeDesc = DataTypeDescEnum.BASE),paramDesc = "区分wait数据，触发更新。1 代表 低wait数据，2 代表高wait数据"),
                 @Param(paramType =@DataType(base = DataTypeEnum.STRING,dataTypeDesc = DataTypeDescEnum.BASE),paramDesc = "缓存的key,如 concat(package_id,goods_id)"),
                 @Param(paramType =@DataType(array = DataTypeEnum.STRING,dataTypeDesc = DataTypeDescEnum.ARRAY),paramDesc = "任意多个字段")},
-        funcReturn = @DataType(array = DataTypeEnum.STRING,dataTypeDesc = DataTypeDescEnum.ARRAY),
-        funcReturnDesc = "返回原始任意多个字段，字符串类型")
+        funcReturn = @Param(paramType =@DataType(array = DataTypeEnum.STRING,dataTypeDesc = DataTypeDescEnum.ARRAY), paramDesc = "返回原始任意多个字段，字符串类型"))
 public class LiveOrderChannelCacheChup extends ScalarFunction {
 
     TimedCache<String, String[]> timedCache = null;

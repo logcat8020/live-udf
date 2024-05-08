@@ -23,8 +23,5 @@ public @interface UdfMeta {
     Param[] funcParam() default {};//参数可能是多个类型，比如第一个参数可能是int也可能是string，不定长参数默认为空
 
     // 输出参数
-    DataType funcReturn();
-
-    // 输出参数说明
-    String funcReturnDesc() default "";
+    Param funcReturn();
 }

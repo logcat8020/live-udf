@@ -15,9 +15,9 @@
         <flink-13.version>red-1.13-SNAPSHOT</flink-13.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--   打包   -->
-<!--        <scope.tag>provided</scope.tag>-->
+        <scope.tag>provided</scope.tag>
         <!--    运行    -->
-                <scope.tag>compile</scope.tag>
+<!--                <scope.tag>compile</scope.tag>-->
     </properties>
 
     <profiles>
@@ -69,6 +69,18 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.6.2</version>
+        </dependency>
+        <!--   使用lombok     -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+        </dependency>
+        <!--    使用logback作为SLF4J的实现，lombok的日志功能   -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
         </dependency>
         <dependency>
             <groupId>red.data.platform.tracker</groupId>
