@@ -6,6 +6,7 @@ import com.red.annotation.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Set;
 
 /**
@@ -19,8 +20,9 @@ public class GeneratorMarkdown {
         MarkdownBuilder builder = new MarkdownBuilder();
         builder.header1(title);
         int count = 0;
-        for (Class<?> clazz : classes) {
-
+        ArrayList<Class<?>> classesList = new ArrayList<>(classes);
+        classesList.sort(Comparator.comparing(Class::getName));
+        for (Class<?> clazz : classesList) {
             if (clazz.isAnnotationPresent(UdfMeta.class)){
                 count += 1;
                 int inner = 1;
@@ -45,6 +47,11 @@ public class GeneratorMarkdown {
                             .table(new String[]{"参数位置","参数类型","参数描述","可选状态"},
                                     data);
                 }
+                if(info.updateLog().length >0){
+                    builder.header3(count + "." + (inner + 2) + ".更新日志")
+                            .orderedList(info.updateLog());
+                }
+                builder.splitLine();
             }
         }
         try {

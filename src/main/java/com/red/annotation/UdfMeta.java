@@ -24,4 +24,7 @@ public @interface UdfMeta {
 
     // 输出参数
     Param funcReturn();
+
+    // 更新日志
+    String[] updateLog() default {};
 }

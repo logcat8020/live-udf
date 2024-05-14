@@ -15,9 +15,9 @@
         <flink-13.version>red-1.13-SNAPSHOT</flink-13.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--   打包   -->
-        <scope.tag>provided</scope.tag>
+<!--        <scope.tag>provided</scope.tag>-->
         <!--    运行    -->
-<!--                <scope.tag>compile</scope.tag>-->
+                <scope.tag>compile</scope.tag>
     </properties>
 
     <profiles>

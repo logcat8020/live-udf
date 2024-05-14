@@ -47,6 +47,12 @@ public class MarkdownBuilder {
         return this;
     }
 
+    public MarkdownBuilder splitLine(){
+
+        builder.append("---\n");
+        return this;
+    }
+
     public MarkdownBuilder table(String[] headers, String[][] data) {
         // 添加表头
         for (String header : headers) {
